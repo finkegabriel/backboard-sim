@@ -1,14 +1,20 @@
-import cmath
+import math
 
 #projectile motion equations
 def x_distance():
     return 0
 
+def X(init,final):
+    p = []
+    for i in range(init,final):
+        p.append(i)
+    return p
+
 #generates a list from a quadratic equation
 def parabolic(xsquare,b,c,n):
     final = []
     for l in range(0,n):
-        final.append((xsquare ** 2)+(b*l)+c)
+        final.append((math.pow(xsquare*l,2))+(b*l)+c)
     print("y values ",final)
     return final
 

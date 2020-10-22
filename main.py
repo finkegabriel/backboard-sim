@@ -17,13 +17,12 @@ xy=[10,10]
 b = Rectangle(backboard,3,2.25,color='r')
 #72 - 9 48 - 6 
 p = Rectangle(xy,9,6,edgecolor='black',facecolor='none')
-
+s = para.parabolic(1,1,100,10)
 
 #adding shape to scene
 ax.add_patch(b)
 ax.add_patch(p)
 
-ax.plot3D(x,y,10,'green')
 
 art3d.pathpatch_2d_to_3d(b, z=0, zdir="x")
 art3d.pathpatch_2d_to_3d(p, z=0, zdir="x")
@@ -31,5 +30,8 @@ art3d.pathpatch_2d_to_3d(p, z=0, zdir="x")
 ax.set_xlim(0, 50)
 ax.set_ylim(0, 50)
 ax.set_zlim(0, 50)
+
+for i in range(0,10):
+    ax.plot(para.X(0,10),s)
 
 plt.show()
