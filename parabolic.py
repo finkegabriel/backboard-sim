@@ -13,8 +13,8 @@ def X(init,final):
 #generates a list from a quadratic equation
 def parabolic(xsquare,b,c,n):
     final = []
-    for l in range(0,n):
-        final.append((math.pow(xsquare*l,2))+(b*l)+c)
+    for l in n:
+        final.append(((xsquare*l)**2)+(b*l)+c)
     print("y values ",final)
     return final
 
