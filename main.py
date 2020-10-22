@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import mpl_toolkits.mplot3d.art3d as art3d
 import parabolic as para
+import matplotlib.animation as animation
 
 fig = plt.figure()
 ax = plt.axes(projection="3d")
@@ -12,14 +13,14 @@ ax = plt.axes(projection="3d")
 backboard=[12.8,11.5]
 xy=[10,10]
 
-x = para.X(0,50)
+x = para.X(0,10)
 #we are using a 1:8 scale for everything 
 #24 - 3 18 - 2.25 
 b = Rectangle(backboard,3,2.25,color='r')
 #72 - 9 48 - 6 
 p = Rectangle(xy,9,6,edgecolor='black',facecolor='none')
 
-s = para.parabolic(1,1,10,x)
+s = para.parabolic(-1,1,10,x)
 
 #adding shape to scene
 ax.add_patch(b)
