@@ -1,19 +1,49 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import mpl_toolkits.mplot3d.axes3d as p3
-import matplotlib.animation as animation
-from mpl_toolkits.mplot3d import Axes3D
-import matplotlib.pyplot as plt
+from matplotlib.patches import Circle, PathPatch
+from matplotlib.text import TextPath
+from matplotlib.transforms import Affine2D
+# This import registers the 3D projection, but is otherwise unused.
+from mpl_toolkits.mplot3d import Axes3D  # noqa: F401 unused import
+import mpl_toolkits.mplot3d.art3d as art3d
 
 
-ax = plt.axes(projection="3d")# Data for a three-dimensional line
-zline = np.linspace(0, 15, 1000)
-xline = np.sin(zline)
-yline = np.cos(zline)
-ax.plot3D(xline, yline, zline, "gray")# Data for three-dimensional scattered points
-zdata = 15 * np.random.random(100)
-xdata = np.sin(zdata) + 0.1 * np.random.randn(100)
-ydata = np.cos(zdata) + 0.1 * np.random.randn(100)
-ax.scatter3D(xdata, ydata, zdata, c=zdata, cmap="Greens")
+def text3d(ax, xyz, s, zdir="z", size=None, angle=0, usetex=False, **kwargs):
+    '''
+    Plots the string 's' on the axes 'ax', with position 'xyz', size 'size',
+    and rotation angle 'angle'.  'zdir' gives the axis which is to be treated
+    as the third dimension.  usetex is a boolean indicating whether the string
+    should be interpreted as latex or not.  Any additional keyword arguments
+    are passed on to transform_path.
+
+    Note: zdir affects the interpretation of xyz.
+    '''
+    x, y, z = xyz
+    if zdir == "y":
+        xy1, z1 = (x, z), y
+    elif zdir == "x":
+        xy1, z1 = (y, z), x
+    else:
+        xy1, z1 = (x, y), z
+
+    text_path = TextPath((0, 0), s, size=size, usetex=usetex)
+    trans = Affine2D().rotate(angle).translate(xy1[0], xy1[1])
+
+    p1 = PathPatch(trans.transform_path(text_path), **kwargs)
+    ax.add_patch(p1)
+    art3d.pathpatch_2d_to_3d(p1, z=z1, zdir=zdir)
+
+
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+
+# Draw a circle on the x=0 'wall'
+p = Circle((5, 5), 3)
+ax.add_patch(p)
+art3d.pathpatch_2d_to_3d(p, z=0, zdir="x")
+
+ax.set_xlim(0, 10)
+ax.set_ylim(0, 10)
+ax.set_zlim(0, 10)
 
 plt.show()
