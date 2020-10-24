@@ -11,11 +11,11 @@ fig = plt.figure()
 ax = plt.axes(projection="3d")
 
 #draw hoop, arrays are for x, y location on the graph
-backboard=[-2.5,11.5]
+backboard=[-2,11.5]
 xy=[-5,10]
 circlexy=[2.25,-.5]
 
-x = para.X(0,5)
+x = para.X(0,15)
 
 #we are using a 1:8 scale for everything 
 #24 - 3 18 - 2.25 
@@ -24,7 +24,7 @@ c = Circle((circlexy),radius=2.25,fill=False)
 #72 - 9 48 - 6 
 p = Rectangle(xy,9,6,edgecolor='red',facecolor='none')
 
-s = para.parabolic(1,0,12,x)
+s = para.parabolic(.2,0,12,x)
 
 #adding shape to scene
 ax.add_patch(b)
