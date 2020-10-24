@@ -15,8 +15,10 @@ ax = plt.axes(projection="3d")
 #draw hoop, arrays are for x, y location on the graph
 backboard=[-2,11.5]
 xy=[-5,10]
+#hoop location parameters
 circlexy=[2.25,-.5]
 
+#this is the domain for the parabola function
 x = para.X(0,15)
 
 #we are using a 1:8 scale for everything 
