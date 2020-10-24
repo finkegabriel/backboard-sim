@@ -43,7 +43,8 @@ ax.set_xlim(0, 20)
 ax.set_ylim(0, 20)
 ax.set_zlim(0, 20)
 
-ax.plot(x,s,zdir="y")
+#zs moves along the z axis that we define in this case being y
+ax.plot(x,s,zs=2,zdir="y")
 
 para.finalX(10,5)
 
