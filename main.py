@@ -1,12 +1,7 @@
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib.patches import Rectangle,Circle
-from matplotlib.text import TextPath
-from  matplotlib import transforms
-
-import numpy as np
 import matplotlib.pyplot as plt
 import mpl_toolkits.mplot3d.art3d as art3d
-import matplotlib.animation as animation
 import parabolic as para
 
 fig = plt.figure()
@@ -48,7 +43,7 @@ ax.set_ylim(0, 20)
 ax.set_zlim(0, 20)
 
 #zs moves along the z axis that we define in this case being y
-ax.plot(x,s,zs=para.z(x),zdir="y")
+ax.plot(x,s,'b--',zs=para.z(x),zdir="y")
 
 para.finalX(10,5)
 

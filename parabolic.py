@@ -8,12 +8,13 @@ def x_distance():
     return 0
 
 #this will calc. z values for the parabola by taking the backwards order of the array given
+#TODO needs an offset range so it does not miss the backboard 
 def z(x):
     a = []
     for l in range(0,len(x)):
         a.append(0-(len(x)-l))
     return a
-        
+
 def X(init,final):
     p = []
     for i in range(init,final):
