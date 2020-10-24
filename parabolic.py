@@ -7,6 +7,13 @@ g = -9.81
 def x_distance():
     return 0
 
+def z(x):
+    a = []
+    for l in range(0,len(x)):
+        s = 0-x[l]
+        a.append(s)
+    return a
+        
 def X(init,final):
     p = []
     for i in range(init,final):
@@ -40,4 +47,3 @@ def finalX(angle,velocity):
     a = (math.cos(math.radians(angle))*velocity)
     print("projectile ",a)
     return 0
-
