@@ -14,7 +14,7 @@ xy=[-5,10]
 circlexy=[2.25,-.5]
 
 #this is the domain for the parabola function
-x = para.X(0,15)
+x = para.X(0,20)
 
 #we are using a 1:8 scale for everything 
 #24 - 3 18 - 2.25 
@@ -42,8 +42,16 @@ ax.set_xlim(0, 20)
 ax.set_ylim(0, 20)
 ax.set_zlim(0, 20)
 
+# print(
+#     "x ",x," \n",
+#     "y ",s," \n",
+#     "z ",para.z(x)," \n",
+# )
+
+xf,yf = para.rotate(x,s,-45)
 #zs moves along the z axis that we define in this case being y
-ax.plot(x,s,'b--',zs=para.z(x),zdir="y")
+##############,zs=x
+ax.plot(x,s,'b--',zs=xf,zdir="y")
 
 para.finalX(10,5)
 

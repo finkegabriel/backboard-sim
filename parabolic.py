@@ -12,8 +12,26 @@ def x_distance():
 def z(x):
     a = []
     for l in range(0,len(x)):
-        a.append(0-(len(x)-l))
+        a.append(0-(x[l]))
     return a
+
+#we are rotating counter clock wise
+def rotate(x,y,rot):
+    # print(x,"\n",y)
+    finalx = []
+    finaly = []
+    for l in range(len(x)):
+        xf = [1+math.floor(math.cos(rot)),0-1-math.floor(math.sin(rot))]
+        yf = [1-math.floor(math.sin(rot)),1+math.floor(math.cos(rot))]
+        # print(
+        # "xf ",xf," x ",x," \n",
+        # "yf ",yf," y ",y," \n")
+        finalx.append((xf[0]*x[l])+(xf[1]*y[l]))
+        finaly.append((yf[0]*x[l])+(yf[1]*y[l]))
+        # print(l)
+        # print("xf ",finalx," ",len(finalx)," \n",
+        #       "yf ",finaly," ",len(finaly)," \n")
+    return finalx,finaly
 
 def X(init,final):
     p = []
