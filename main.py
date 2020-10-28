@@ -1,8 +1,11 @@
 from mpl_toolkits.mplot3d import Axes3D
+from scipy.ndimage.interpolation import rotate
 from matplotlib.patches import Rectangle,Circle
 import matplotlib.pyplot as plt
 import mpl_toolkits.mplot3d.art3d as art3d
 import parabolic as para
+import numpy as np
+import csvfile as csv
 
 fig = plt.figure()
 ax = plt.axes(projection="3d")
@@ -14,7 +17,7 @@ xy=[-5,10]
 circlexy=[2.25,-.5]
 
 #this is the domain for the parabola function
-x = para.X(0,20)
+x = para.X(0,15)
 
 #we are using a 1:8 scale for everything 
 #24 - 3 18 - 2.25 
@@ -23,7 +26,7 @@ c = Circle((circlexy),radius=2.25,fill=False)
 #72 - 9 48 - 6 
 p = Rectangle(xy,9,6,edgecolor='red',facecolor='none')
 
-s = para.parabolic(.2,0,12,x)
+s = para.parabolic(.3,0,12,x)
 
 #adding shape to scene
 ax.add_patch(b)
@@ -42,17 +45,13 @@ ax.set_xlim(0, 20)
 ax.set_ylim(0, 20)
 ax.set_zlim(0, 20)
 
-# print(
-#     "x ",x," \n",
-#     "y ",s," \n",
-#     "z ",para.z(x)," \n",
-# )
+# (za) = para.rotate(x,s,0)
 
-xf,yf = para.rotate(x,s,-45)
+csv.exportCsv("output.csv",x,s)
+
 #zs moves along the z axis that we define in this case being y
 ##############,zs=x
-ax.plot(x,s,'b--',zs=xf,zdir="y")
-
-para.finalX(10,5)
+ax.plot(x,s,'b--',zs=1,zdir="y")
+# ax.plot(x,s2,'b--',zs=za,zdir="z")
 
 plt.show()
