@@ -39,10 +39,13 @@ def X(init,final):
         p.append(i)
     return p
 
-#generates a list from a quadratic equation
+#this function will compute a parabola and its vertex rotated on its side
+# y = -b/2a
+# x = 
 def parabolic(a,b,c,n):
     final = []
     for x in n:
+        # final.append()
         final.append(((-(a*(x))**2))+(b*x)+c)
     return final
 

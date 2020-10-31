@@ -16,8 +16,8 @@ xy=[-5,10]
 #hoop location parameters
 circlexy=[2.25,-.5]
 
-#this is the domain for the parabola function
-x = para.X(0,15)
+#this is the domain for the parabolic function
+x = para.X(-15,15)
 
 #we are using a 1:8 scale for everything 
 #24 - 3 18 - 2.25 
@@ -45,12 +45,9 @@ ax.set_xlim(0, 20)
 ax.set_ylim(0, 20)
 ax.set_zlim(0, 20)
 
-# (za) = para.rotate(x,s,0)
-
-csv.exportCsv("output.csv",x,s)
-
 #zs moves along the z axis that we define in this case being y
 ##############,zs=x
+
 ax.plot(x,s,'b--',zs=1,zdir="y")
 # ax.plot(x,s2,'b--',zs=za,zdir="z")
 
