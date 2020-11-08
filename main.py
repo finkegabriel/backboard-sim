@@ -10,6 +10,9 @@ import csvfile as csv
 fig = plt.figure()
 ax = plt.axes(projection="3d")
 
+# generate x and y values then to compute z do this z = x^2-y^2
+
+
 #draw hoop, arrays are for x, y location on the graph
 backboard=[-2,11.5]
 xy=[-5,10]

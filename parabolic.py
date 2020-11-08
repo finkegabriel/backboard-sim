@@ -43,11 +43,12 @@ def X(init,final):
 # y = -b/2a
 # x = 
 def parabolic(a,b,c,n):
-    final = []
+    finaly = []
     for x in n:
         # final.append()
-        final.append(((-(a*(x))**2))+(b*x)+c)
-    return final
+        finaly.append(((-(a*(x))**2))+(b*x)+c)
+    print(finaly)
+    return finaly
 
 def defineParabola(v,a):
     return 0
