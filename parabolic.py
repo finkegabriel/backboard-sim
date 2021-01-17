@@ -7,12 +7,19 @@ g = -9.81
 def x_distance():
     return 0
 
+def betterZ(x,y,offset):
+    print("z")
+    final = []
+    # z = ((offset/y)*((x-x)**2)+y)    
+    return final
+
 #this will calc. z values
 #TODO needs an offset range so it does not miss the backboard 
-def z(x,y):
+def z(x,y,zval):
     z = []
     for l in range(len(x)):
-        z0 = x[l]**2+y[l]**2
+        #z0 = x[l]**2+y[l]**2
+        z0 = l-zval
         z.append(z0)
     return z
 
@@ -47,11 +54,8 @@ def parabolic(a,b,c,n):
     for x in n:
         # final.append()
         finaly.append(((-(a*(x))**2))+(b*x)+c)
-    print(finaly)
+    #print(finaly)
     return finaly
-
-def defineParabola(v,a):
-    return 0
 
 def line(m,b,n):
     #y=mx+b

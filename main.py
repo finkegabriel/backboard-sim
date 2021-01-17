@@ -6,6 +6,7 @@ import mpl_toolkits.mplot3d.art3d as art3d
 import parabolic as para
 import numpy as np
 import csvfile as csv
+import importlib
 
 fig = plt.figure()
 ax = plt.axes(projection="3d")
@@ -30,8 +31,11 @@ c = Circle((circlexy),radius=2.25,fill=False)
 p = Rectangle(xy,9,6,edgecolor='red',facecolor='none')
 
 s = para.parabolic(.3,0,12,x)
-
-#adding shape to scene
+z = para.z(x,s,12)
+for _ in range(100):
+    z = para.z(x,s,_)
+    ax.plot(x,s,'b--',zs=z,zdir="y")
+    #adding shape to scene
 ax.add_patch(b)
 ax.add_patch(p)
 ax.add_patch(c)
@@ -47,11 +51,11 @@ art3d.pathpatch_2d_to_3d(c, z=10, zdir="z")
 ax.set_xlim(0, 20)
 ax.set_ylim(0, 20)
 ax.set_zlim(0, 20)
-
+print(z)
 #zs moves along the z axis that we define in this case being y
 ##############,zs=x
 
-ax.plot(x,s,'b--',zs=1,zdir="y")
+#ax.plot(x,s,'b--',zs=z,zdir="y")
 # ax.plot(x,s2,'b--',zs=za,zdir="z")
-
 plt.show()
+importlib.reload(plt)
