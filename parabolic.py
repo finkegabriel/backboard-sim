@@ -24,7 +24,7 @@ def z(x,y,zval):
     return z
 
 #we are rotating counter clock wise
-def rotate(x,y,rot):
+def zrotate(x,y,rot):
     # print(x,"\n",y)
     z = []
     for l in range(len(x)):

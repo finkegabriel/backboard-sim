@@ -21,7 +21,7 @@ xy=[-5,10]
 circlexy=[2.25,-.5]
 
 #this is the domain for the parabolic function
-x = para.X(-15,15)
+x = para.X(0,15)
 
 #we are using a 1:8 scale for everything 
 #24 - 3 18 - 2.25 
@@ -31,8 +31,9 @@ c = Circle((circlexy),radius=2.25,fill=False)
 p = Rectangle(xy,9,6,edgecolor='red',facecolor='none')
 
 s = para.parabolic(.3,0,12,x)
-z = para.z(x,s,12)
-for _ in range(100):
+#z = para.z(x,s,12)
+
+for _ in range(0,4): #for loop to create multiple parabolas instances
     z = para.z(x,s,_)
     ax.plot(x,s,'b--',zs=z,zdir="y")
     #adding shape to scene
@@ -54,8 +55,5 @@ ax.set_zlim(0, 20)
 print(z)
 #zs moves along the z axis that we define in this case being y
 ##############,zs=x
-
-#ax.plot(x,s,'b--',zs=z,zdir="y")
-# ax.plot(x,s2,'b--',zs=za,zdir="z")
 plt.show()
 importlib.reload(plt)
