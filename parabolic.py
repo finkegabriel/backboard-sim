@@ -1,17 +1,11 @@
 import math
 
 #constants
-g = -9.81
+g = -9.81 #(m/(s^2))
 
 #projectile motion equations
 def x_distance():
     return 0
-
-def betterZ(x,y,offset):
-    print("z")
-    final = []
-    # z = ((offset/y)*((x-x)**2)+y)    
-    return final
 
 #this will calc. z values
 #TODO needs an offset range so it does not miss the backboard 
@@ -50,12 +44,10 @@ def X(init,final):
 # y = -b/2a
 # x = 
 def parabolic(a,b,c,n):
-    finaly = []
+    final = []
     for x in n:
-        # final.append()
-        finaly.append(((-(a*(x))**2))+(b*x)+c)
-    #print(finaly)
-    return finaly
+        final.append(((-(a*(x))**2))+(b*x)+c)
+    return final
 
 def line(m,b,n):
     #y=mx+b
