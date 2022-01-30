@@ -2,7 +2,6 @@ from tkinter import Y
 from mpl_toolkits.mplot3d import Axes3D
 from parabolic import X
 from scipy.ndimage.interpolation import rotate
-import matplotlib.pyplot as plt
 import mpl_toolkits.mplot3d.art3d as art3d
 import csvfile as csv
 import mpl_toolkits.mplot3d.art3d as art3d
@@ -16,11 +15,6 @@ class Graph():
         ax.set_xlim(0, 20)
         ax.set_ylim(0, 20)
         ax.set_zlim(0, 20)
-        plt.show()
-
-    def plot2D(self,x,y):
-        plt.plot(x,y)
-        plt.show()
 
     def draw(self,ax,b,p,c):
         ax.add_patch(b)
@@ -41,3 +35,4 @@ class Graph():
 
     def save_csv(self,x,y,z):
         csv.exportCsv("data_2.csv",x,y,z)
+

@@ -60,4 +60,3 @@ ax.set_zlim(0, 20)
 #zs moves along the z axis that we define in this case being y
 ##############,zs=x
 plt.show()
-importlib.reload(plt) 
