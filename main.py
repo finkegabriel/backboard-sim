@@ -14,8 +14,8 @@ t1 = Translate()
 g1 = Graph()
 ax = plt.axes(projection="3d")
 
-doex = [.4, .4,.4,.4]
-doey = [11, 11, 11, 2 ]
+doex = [.4,.4,.4,.4]
+doey = [11,2,2,11]
 doez = [9.9,9.9,15.9,15.9]
 
 def paraBolEqn(data,a,b,c,d):
