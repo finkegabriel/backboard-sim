@@ -23,13 +23,8 @@ def paraBolEqn(data,a,b,c,d):
     return -(((x-b)/a)**2+((y-d)/c)**2)+1.0
 popt,pcov=optimize.curve_fit(paraBolEqn,np.vstack((doex,doey)),doez,p0=[1.5,0.4,1.5,0.4])
 
-# r=R.from_matrix(np.array([doex,doey,doez]))
-# print(r)
-# fig = plt.figure(figsize=(8,6))
-# ax = fig.add_subplot(111, projection='3d')
-
-x, y = np.meshgrid(np.linspace(np.min(doex), np.max(doex),1), np.linspace(np.min(doey),np.max(doey), 1))
-ax.plot_wireframe(x, y, paraBolEqn((x,y), *popt))
+# x, y = np.meshgrid(np.linspace(np.min(doex), np.max(doex),1), np.linspace(np.min(doey),np.max(doey), 1))
+# ax.plot_wireframe(x, y, paraBolEqn((x,y), *popt))
 ax.scatter(doex, doey, doez, color='b')
 print(doex,doey,doez)
 
