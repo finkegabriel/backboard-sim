@@ -9,6 +9,7 @@ from datetime import datetime, timedelta
 import scipy.optimize as optimize
 from mpl_toolkits.mplot3d import Axes3D
 from scipy.spatial.transform import Rotation as R
+import math as math
 
 t1 = Translate()
 g1 = Graph()
@@ -21,8 +22,8 @@ doez = [9.9,9.9,15.9,15.9]
 #draw a paraobola along the x,z (side view) axis 
 #draw a parabola along the y,z (front view) axis
 #(ax^2+bx+c)
-#x=(-b/2a)
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+#x=(-b/2a)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+rotate = 45
 
 def paraBolEqn(data,a,b,c,d):
     x,y = data
@@ -31,9 +32,18 @@ popt,pcov=optimize.curve_fit(paraBolEqn,np.vstack((doex,doey)),doez,p0=[1.5,0.4,
 
 # x, y = np.meshgrid(np.linspace(np.min(doex), np.max(doex),1), np.linspace(np.min(doey),np.max(doey), 1))
 # ax.plot_wireframe(x, y, paraBolEqn((x,y), *popt))
+
+# bellow will draw points where the parabolic mesh should be top left, top right, center, bottom right, and bottom left points
 ax.scatter(doex, doey, doez, color='b')
 ax.scatter(doex[0],((doey[0]+doey[1])/2),((doez[0]+doez[2])/2),color='b')
-print(((doey[0]+doey[1])/2),((doez[0]+doez[2])/2))
+
+xi = np.linspace(0, 15, 10)
+yi = xi**2 + xi*2
+yii = yi*math.cos(rotate)+xi*math.sin(rotate)
+
+print("rotated parabola ",xi," yii ",yii)
+
+ax.plot(xi,yii)
 
 guess = (1,1)
 #draw hoop, arrays are for x, y location on the graph
