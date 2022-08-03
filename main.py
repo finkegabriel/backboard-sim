@@ -23,7 +23,12 @@ doez = [9.9,9.9,15.9,15.9]
 #draw a parabola along the y,z (front view) axis
 #(ax^2+bx+c)
 #x=(-b/2a)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
-rotate = 45
+theta = 1.52
+h= 0
+k= 0
+
+hh = 0
+kk = 0
 
 def paraBolEqn(data,a,b,c,d):
     x,y = data
@@ -37,13 +42,18 @@ popt,pcov=optimize.curve_fit(paraBolEqn,np.vstack((doex,doey)),doez,p0=[1.5,0.4,
 ax.scatter(doex, doey, doez, color='b')
 ax.scatter(doex[0],((doey[0]+doey[1])/2),((doez[0]+doez[2])/2),color='b')
 
-xi = np.linspace(0, 15, 10)
-yi = xi**2 + xi*2
-yii = yi*math.cos(rotate)+xi*math.sin(rotate)
+xi = np.linspace(-5.5, 6.5, 500)
+yi = .03*xi**2
+yii = (((-xi*math.cos(theta)+yi*math.sin(theta)-h)**2)+k)
 
-print("rotated parabola ",xi," yii ",yii)
+#plot of the top parabola to average with a matrix
+ax.plot(yii+.4,-xi+((doey[0]+doey[1])/2),(doez[2]),zdir='z')
 
-ax.plot(xi,yii)
+# second plot of the parabola off to the side of the hoop
+xii = np.linspace(-1,2,500)
+yii = .03*xi**2
+yiii = (((-xi*math.cos(theta)+yi*math.sin(theta)-hh)**2)+kk)
+ax.plot(yii+.4,xi+((doez[0]+doez[2])/2),((doey[0])),zdir='y')#(doey[0]),zdir='y')
 
 guess = (1,1)
 #draw hoop, arrays are for x, y location on the graph
@@ -53,8 +63,6 @@ xy=[2,10]
 circlexy=[2.25,6.5]
 x = para.X(0,15)
 s = para.parabolic(.3,0,12,x)
-
-
 
 b = Rectangle(backboard,3,2.25,fill=False,color='red')
 c = Circle((circlexy),radius=2.25,fill=False)
@@ -66,6 +74,5 @@ for _ in range(0,1): #for loop to create multiple parabolas instances
     # ax.plot(x,s,'b--',zs=z,zdir="y")
 
 g1.draw(ax,b,p,c)
-# g1.plot3D(ax,x1,y1,z1)
 plt.show()
 importlib.reload(plt) 
