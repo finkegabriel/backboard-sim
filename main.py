@@ -1,3 +1,4 @@
+from turtle import color
 from matplotlib.patches import Rectangle,Circle
 from translate import Translate
 from graph import Graph
@@ -50,10 +51,31 @@ yii = (((-xi*math.cos(theta)+yi*math.sin(theta)-h)**2)+k)
 ax.plot(yii+.4,-xi+((doey[0]+doey[1])/2),(doez[2]),zdir='z')
 
 # second plot of the parabola off to the side of the hoop
-xii = np.linspace(-1,2,500)
-yii = .03*xi**2
+xii = np.linspace(-5.5,6.5,500)
+yii = .03*xii**2
 yiii = (((-xi*math.cos(theta)+yi*math.sin(theta)-hh)**2)+kk)
 ax.plot(yii+.4,xi+((doez[0]+doez[2])/2),((doey[0])),zdir='y')#(doey[0]),zdir='y')
+
+for x in range(len(xii)):
+    #bottom right
+    print("0 ",doex[0],doey[0],doez[0])
+    ax.scatter(doex[0],doey[0],doez[0],color="green")
+    #bottom left
+    print("1 ",doex[1],doey[1],doez[1])
+    ax.scatter(doex[1],doey[1],doez[1],color="green")
+    #top left
+    print("2 ",doex[2],doey[2],doez[2])
+    ax.scatter(doex[2],doey[2],doez[2],color="green")
+    #top right
+    print("3 ",doex[3],doey[3],doez[3])
+    ax.scatter(doex[3],doey[3],doez[3],color="green")
+    A = [[doex[0],doey[0],doez[0]],
+         [doex[1],doey[1],doez[1]],
+         [doex[2],doey[2],doez[2]],
+         [doex[3],doey[3],doez[3]]]
+    print(A)
+    # if x<=(len(xii)-2):
+        # ax.scatter((xii[x]+xii[x+1])/2,(yii[x]+yii[x+1])/2,(doez[2]),zdir='y',color='blue')
 
 guess = (1,1)
 #draw hoop, arrays are for x, y location on the graph
