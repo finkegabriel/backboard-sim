@@ -54,11 +54,26 @@ yii = .03*xii**2
 yiii = (((-xi*math.cos(theta)+yi*math.sin(theta)-h)**2)+k)
 ax.plot(yii+.4,xi+((doez[0]+doez[2])/2),((doey[0])),zdir='y',color='green')#(doey[0]),zdir='y')
 
-
 xiii = np.linspace(-5.5,6.5,500)
 yiiii = .03*xii**2
 yiiiii = (((-xi*math.cos(theta)+yi*math.sin(theta)-h)**2)+k)
 ax.plot(yiiii+.4,xiii+((doez[0]+doez[2])/2),((doey[1])),zdir='y',color='green')
+ax.plot(yiiii+.4,xiii+((doez[0]+doez[2])/2),((doey[1]+1)),zdir='y',color='green')
+ax.plot(yiiii+.4,xiii+((doez[0]+doez[2])/2),((doey[1]+2)),zdir='y',color='green')
+ax.plot(yiiii+.4,xiii+((doez[0]+doez[2])/2),((doey[1]+3)),zdir='y',color='green')
+ax.plot(yiiii+.4,xiii+((doez[0]+doez[2])/2),((doey[1]+4)),zdir='y',color='green')
+ax.plot(yiiii+.4,xiii+((doez[0]+doez[2])/2),((doey[1]+5)),zdir='y',color='green')
+ax.plot(yiiii+.4,xiii+((doez[0]+doez[2])/2),((doey[1]+6)),zdir='y',color='green')
+ax.plot(yiiii+.4,xiii+((doez[0]+doez[2])/2),((doey[1]+7)),zdir='y',color='green')
+ax.plot(yiiii+.4,xiii+((doez[0]+doez[2])/2),((doey[1]+8)),zdir='y',color='green')
+
+ax.plot(yi+.4,-xi+((doey[0]+doey[1])/2),(doez[2]-6),zdir='z',color='green')
+ax.plot(yi+.4,-xi+((doey[0]+doey[1])/2),(doez[2]-5),zdir='z',color='green')
+ax.plot(yi+.4,-xi+((doey[0]+doey[1])/2),(doez[2]-4),zdir='z',color='green')
+ax.plot(yi+.4,-xi+((doey[0]+doey[1])/2),(doez[2]-3),zdir='z',color='green')
+ax.plot(yi+.4,-xi+((doey[0]+doey[1])/2),(doez[2]-2),zdir='z',color='green')
+ax.plot(yi+.4,-xi+((doey[0]+doey[1])/2),(doez[2]-1),zdir='z',color='green')
+
 # for x in range(len(xii)):
     #bottom right
 print("x ",doex[0],doex[1],doex[2],doex[3])
