@@ -46,14 +46,19 @@ yi = .03*xi**2
 yii = (((-xi*math.cos(theta)+yi*math.sin(theta)-h)**2)+k)
 
 #plot of the top parabola to average with a matrix
-ax.plot(yii+.4,-xi+((doey[0]+doey[1])/2),(doez[2]),zdir='z')
+ax.plot(yii+.4,-xi+((doey[0]+doey[1])/2),(doez[2]),zdir='z',color='green')
 
 # second plot of the parabola off to the side of the hoop
 xii = np.linspace(-5.5,6.5,500)
 yii = .03*xii**2
 yiii = (((-xi*math.cos(theta)+yi*math.sin(theta)-h)**2)+k)
-ax.plot(yii+.4,xi+((doez[0]+doez[2])/2),((doey[0])),zdir='y')#(doey[0]),zdir='y')
+ax.plot(yii+.4,xi+((doez[0]+doez[2])/2),((doey[0])),zdir='y',color='green')#(doey[0]),zdir='y')
 
+
+xiii = np.linspace(-5.5,6.5,500)
+yiiii = .03*xii**2
+yiiiii = (((-xi*math.cos(theta)+yi*math.sin(theta)-h)**2)+k)
+ax.plot(yiiii+.4,xiii+((doez[0]+doez[2])/2),((doey[1])),zdir='y',color='green')
 # for x in range(len(xii)):
     #bottom right
 print("x ",doex[0],doex[1],doex[2],doex[3])

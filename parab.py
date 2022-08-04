@@ -5,12 +5,14 @@ from mpl_toolkits.mplot3d import Axes3D
 fig = plt.figure(figsize=(8,6))
 ax = fig.add_subplot(111, projection='3d')
 
-doex = [0.4,0.165,0.165,0.585,0.585]
-doey = [.45, .22, .63, .22, .63]
-doez = np.array([1, .99, .98,.97,.96])
+doex = [-.585,-.585,0.165,0.585,0.585]
+doey = [.63, .22, .63, .22, .63]
+doez = np.array([.96, .97, .98,.97,.96])
 
 def paraBolEqn(data,a,b,c,d):
     x,y = data
+    cc = -(((x-b)/a)**2+((y-d)/c)**2)+1.0
+    print(cc)
     return -(((x-b)/a)**2+((y-d)/c)**2)+1.0
 
 popt,pcov=opt.curve_fit(paraBolEqn,np.vstack((doex,doey)),doez,p0=[1.5,0.4,1.5,0.4])
