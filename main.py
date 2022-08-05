@@ -12,6 +12,7 @@ from mpl_toolkits.mplot3d import Axes3D
 from scipy.spatial.transform import Rotation as R
 import math as math
 import scipy.optimize as opt
+import motion as motion
 
 t1 = Translate()
 g1 = Graph()
@@ -76,13 +77,13 @@ ax.plot(yi+.4,-xi+((doey[0]+doey[1])/2),(doez[2]-1),zdir='z',color='green')
 
 # for x in range(len(xii)):
     #bottom right
-print("x ",doex[0],doex[1],doex[2],doex[3])
+# print("x ",doex[0],doex[1],doex[2],doex[3])
     # ax.scatter(doex[0],doey[0],doez[0],color="green")
     #bottom left
-print("y ",doey[0],doey[1],doey[2],doey[3])
+# print("y ",doey[0],doey[1],doey[2],doey[3])
     # ax.scatter(doex[1],doey[1],doez[1],color="green")
     #top left
-print("z ",doez[0],doez[1],doez[2],doez[3])
+# print("z ",doez[0],doez[1],doez[2],doez[3])
     # ax.scatter(doex[2],doey[2],doez[2],color="green")
     #top right
 # print("3 ",doex[3],doey[3],doez[3])
@@ -115,8 +116,8 @@ c = Circle((circlexy),radius=2.25,fill=False)
 #72 - 9 48 - 6 
 p = Rectangle(xy,9,6,edgecolor='red',facecolor='none')
 
-for _ in range(0,1): #for loop to create multiple parabolas instances
-    z = para.z(x,s,_)
+# for _ in range(0,1): #for loop to create multiple parabolas instances
+#     z = para.z(x,s,_)
     # ax.plot(x,s,'b--',zs=z,zdir="y")
 
 g1.draw(ax,b,p,c)
