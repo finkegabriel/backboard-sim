@@ -55,7 +55,7 @@ yiiii = .03*xii**2
 yiiiii = (((-xi*math.cos(theta)+yi*math.sin(theta)-h)**2)+k)
 
 ########
-xip = np.linspace(0, 9, 500)
+xip = np.linspace(0, 10, 500)
 yip = .09*-xip**2+12
 ax.plot(xip,yip,10,zdir='y',color='black')
 ########
