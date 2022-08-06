@@ -54,6 +54,12 @@ xiii = np.linspace(-5.5,6.5,500)
 yiiii = .03*xii**2
 yiiiii = (((-xi*math.cos(theta)+yi*math.sin(theta)-h)**2)+k)
 
+########
+xip = np.linspace(0, 9, 500)
+yip = .09*-xip**2+12
+ax.plot(xip,yip,10,zdir='y',color='black')
+########
+
 for oX in range(xParaBounds):
     ax.plot(yiiii+.4,xiii+((doez[0]+doez[2])/2),((doey[1])+oX),zdir='y',color='green')
 
