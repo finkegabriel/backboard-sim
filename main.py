@@ -30,13 +30,8 @@ theta = 1.52
 h= 0
 k= 0
 
-def paraBolEqn(data,a,b,c,d):
-    x,y = data
-    return -(((x-b)/a)**2+((y-d)/c)**2)+1.0
-popt,pcov=optimize.curve_fit(paraBolEqn,np.vstack((doex,doey)),doez,p0=[1.5,0.4,1.5,0.4])
-
-# x, y = np.meshgrid(np.linspace(np.min(doex), np.max(doex),1), np.linspace(np.min(doey),np.max(doey), 1))
-# ax.plot_wireframe(x, y, paraBolEqn((x,y), *popt))
+xParaBounds = 9
+yParaBounds = 7
 
 # bellow will draw points where the parabolic mesh should be top left, top right, center, bottom right, and bottom left points
 ax.scatter(doex, doey, doez, color='b')
@@ -58,50 +53,14 @@ ax.plot(yii+.4,xi+((doez[0]+doez[2])/2),((doey[0])),zdir='y',color='green')#(doe
 xiii = np.linspace(-5.5,6.5,500)
 yiiii = .03*xii**2
 yiiiii = (((-xi*math.cos(theta)+yi*math.sin(theta)-h)**2)+k)
-ax.plot(yiiii+.4,xiii+((doez[0]+doez[2])/2),((doey[1])),zdir='y',color='green')
-ax.plot(yiiii+.4,xiii+((doez[0]+doez[2])/2),((doey[1]+1)),zdir='y',color='green')
-ax.plot(yiiii+.4,xiii+((doez[0]+doez[2])/2),((doey[1]+2)),zdir='y',color='green')
-ax.plot(yiiii+.4,xiii+((doez[0]+doez[2])/2),((doey[1]+3)),zdir='y',color='green')
-ax.plot(yiiii+.4,xiii+((doez[0]+doez[2])/2),((doey[1]+4)),zdir='y',color='green')
-ax.plot(yiiii+.4,xiii+((doez[0]+doez[2])/2),((doey[1]+5)),zdir='y',color='green')
-ax.plot(yiiii+.4,xiii+((doez[0]+doez[2])/2),((doey[1]+6)),zdir='y',color='green')
-ax.plot(yiiii+.4,xiii+((doez[0]+doez[2])/2),((doey[1]+7)),zdir='y',color='green')
-ax.plot(yiiii+.4,xiii+((doez[0]+doez[2])/2),((doey[1]+8)),zdir='y',color='green')
 
-ax.plot(yi+.4,-xi+((doey[0]+doey[1])/2),(doez[2]-6),zdir='z',color='green')
-ax.plot(yi+.4,-xi+((doey[0]+doey[1])/2),(doez[2]-5),zdir='z',color='green')
-ax.plot(yi+.4,-xi+((doey[0]+doey[1])/2),(doez[2]-4),zdir='z',color='green')
-ax.plot(yi+.4,-xi+((doey[0]+doey[1])/2),(doez[2]-3),zdir='z',color='green')
-ax.plot(yi+.4,-xi+((doey[0]+doey[1])/2),(doez[2]-2),zdir='z',color='green')
-ax.plot(yi+.4,-xi+((doey[0]+doey[1])/2),(doez[2]-1),zdir='z',color='green')
+for oX in range(xParaBounds):
+    ax.plot(yiiii+.4,xiii+((doez[0]+doez[2])/2),((doey[1])+oX),zdir='y',color='green')
 
-# for x in range(len(xii)):
-    #bottom right
-# print("x ",doex[0],doex[1],doex[2],doex[3])
-    # ax.scatter(doex[0],doey[0],doez[0],color="green")
-    #bottom left
-# print("y ",doey[0],doey[1],doey[2],doey[3])
-    # ax.scatter(doex[1],doey[1],doez[1],color="green")
-    #top left
-# print("z ",doez[0],doez[1],doez[2],doez[3])
-    # ax.scatter(doex[2],doey[2],doez[2],color="green")
-    #top right
-# print("3 ",doex[3],doey[3],doez[3])
-    # ax.scatter(doex[3],doey[3],doez[3],color="green")
-    # A = [[doex[0],doey[0],doez[0]],
-    #      [doex[1],doey[1],doez[1]],
-    #      [doex[2],doey[2],doez[2]],
-    #      [doex[3],doey[3],doez[3]]]
-    # print(A)
-    # xv,yv = np.meshgrid(xii,yii,indexing='ij')
-    # print(xv,yv)
-    # print(xv,yv)
-    # for ix in range(xv):
-    #     for iy in range(yv):
-    #         print(ix,iy)
-    # if x<=(len(xii)-2):
-        # ax.scatter((xii[x]+xii[x+1])/2,(yii[x]+yii[x+1])/2,(doez[2]),zdir='y',color='blue')
+for oY in range(yParaBounds):
+    ax.plot(yi+.4,-xi+((doey[0]+doey[1])/2),(doez[2]-oY),zdir='z',color='green')
 
+motion.trackBoundry()
 guess = (1,1)
 #draw hoop, arrays are for x, y location on the graph
 backboard=[5,11.5]
