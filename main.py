@@ -60,21 +60,27 @@ yip = .09*-xip**2+12
 ax.plot(xip+.4,yip+1.5,10,zdir='y',color='black')
 ########
 
+print(" x ",xip+.4," y ",yip+1.5," z ",10," length ",xip[len(xip)-1],yip[len(yip)-1],10)
+
+#to get vertex of the parabola index at 0 so xip[len(xip)-(len(xip))] will result in locating index 0
+ax.scatter(xip[len(xip)-(len(xip))]+.4,yip[len(yip)-(len(yip))]+1.5,10,zdir='y',color='purple')
+
 for oX in range(xParaBounds):
     ax.plot(yiiii+.4,xiii+((doez[0]+doez[2])/2),((doey[1])+oX),zdir='y',color='green')
 
 for oY in range(yParaBounds):
     ax.plot(yi+.4,-xi+((doey[0]+doey[1])/2),(doez[2]-oY),zdir='z',color='green')
 
-print("x ",doex[0],doex[1],doex[2],doex[3])
-ax.scatter(doex[0],doey[0],doez[0],color="green")
-    # bottom left
-print("y ",doey[0],doey[1],doey[2],doey[3])
-ax.scatter(doex[1],doey[1],doez[1],color="green")
-    # top left
-print("z ",doez[0],doez[1],doez[2],doez[3])
-ax.scatter(doex[2],doey[2],doez[2],color="green")
-    # top right
+# print("x ",doex[0],doex[1],doex[2],doex[3])
+# ax.scatter(doex[0],doey[0],doez[0],color="green")
+#     # bottom left
+# print("y ",doey[0],doey[1],doey[2],doey[3])
+# ax.scatter(doex[1],doey[1],doez[1],color="green")
+#     # top left
+# print("z ",doez[0],doez[1],doez[2],doez[3])
+# ax.scatter(doex[2],doey[2],doez[2],color="green")
+#     # top right
+
 csvData = csvTool.readCsv('test1.csv',',')
 print(csvData)
 # motion.trackBoundry()
