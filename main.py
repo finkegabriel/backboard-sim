@@ -106,11 +106,6 @@ for oX in range(xParaBounds):
 for oY in range(yParaBounds):
     ax.plot(yi+.4,-xi+((doey[0]+doey[1])/2),(doez[2]-oY),zdir='z',color='green')
 
-
-# for _ in range(0,1): #for loop to create multiple parabolas instances
-#     z = para.z(x,s,_)
-    # ax.plot(x,s,'b--',zs=z,zdir="y")
-
 g1.draw(ax,b,p,c)
 plt.show()
 importlib.reload(plt) 
