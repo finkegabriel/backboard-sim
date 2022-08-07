@@ -60,17 +60,6 @@ yip = .09*-xip**2+12
 ax.plot(xip+.4,yip+1.5,10,zdir='y',color='black')
 ########
 
-print(" x ",xip+.4," y ",yip+1.5," z ",10," length ",xip[len(xip)-1],yip[len(yip)-1],10)
-
-#to get vertex of the parabola index at 0 so xip[len(xip)-(len(xip))] will result in locating index 0
-ax.scatter(xip[len(xip)-(len(xip))]+.4,yip[len(yip)-(len(yip))]+1.5,10,zdir='y',color='purple')
-
-for oX in range(xParaBounds):
-    ax.plot(yiiii+.4,xiii+((doez[0]+doez[2])/2),((doey[1])+oX),zdir='y',color='green')
-
-for oY in range(yParaBounds):
-    ax.plot(yi+.4,-xi+((doey[0]+doey[1])/2),(doez[2]-oY),zdir='z',color='green')
-
 # print("x ",doex[0],doex[1],doex[2],doex[3])
 # ax.scatter(doex[0],doey[0],doez[0],color="green")
 #     # bottom left
@@ -97,6 +86,20 @@ b = Rectangle(backboard,3,2.25,fill=False,color='red')
 c = Circle((circlexy),radius=2.25,fill=False)
 #72 - 9 48 - 6 
 p = Rectangle(xy,9,6,edgecolor='red',facecolor='none')
+
+print(" x ",xip+.4," y ",yip+1.5," z ",10," length ",xip[len(xip)-1],yip[len(yip)-1],10)
+
+# to get vertex of the parabola index at 0 so xip[len(xip)-(len(xip))] will result in locating index 0
+# use this in automated fashion to get the vertex and calculate bounce angle
+
+ax.scatter(xip[len(xip)-(len(xip))]+.4,yip[len(yip)-(len(yip))]+1.5,10,zdir='y',color='purple')
+
+for oX in range(xParaBounds):
+    ax.plot(yiiii+.4,xiii+((doez[0]+doez[2])/2),((doey[1])+oX),zdir='y',color='green')
+
+for oY in range(yParaBounds):
+    ax.plot(yi+.4,-xi+((doey[0]+doey[1])/2),(doez[2]-oY),zdir='z',color='green')
+
 
 # for _ in range(0,1): #for loop to create multiple parabolas instances
 #     z = para.z(x,s,_)
