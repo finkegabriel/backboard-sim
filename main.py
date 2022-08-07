@@ -67,7 +67,6 @@ for oX in range(xParaBounds):
 for oY in range(yParaBounds):
     ax.plot(yi+.4,-xi+((doey[0]+doey[1])/2),(doez[2]-oY),zdir='z',color='green')
 
-
 print("x ",doex[0],doex[1],doex[2],doex[3])
 ax.scatter(doex[0],doey[0],doez[0],color="green")
     # bottom left
