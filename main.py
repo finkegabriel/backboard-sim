@@ -58,7 +58,7 @@ yiiiii = (((-xi*math.cos(theta)+yi*math.sin(theta)-h)**2)+k)
 ########
 xip = np.linspace(0, 10, 500)
 yip = .09*-xip**2+12
-ax.plot(xip+.04,yip+1.5,10,zdir='y',color='black')
+ax.plot(xip+.4,yip+1.5,10,zdir='y',color='black')
 ########
 
 for oX in range(xParaBounds):
