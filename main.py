@@ -13,6 +13,7 @@ from scipy.spatial.transform import Rotation as R
 import math as math
 import scipy.optimize as opt
 import motion as motion
+import csvfile as csvTool
 
 t1 = Translate()
 g1 = Graph()
@@ -57,7 +58,7 @@ yiiiii = (((-xi*math.cos(theta)+yi*math.sin(theta)-h)**2)+k)
 ########
 xip = np.linspace(0, 10, 500)
 yip = .09*-xip**2+12
-ax.plot(xip,yip,10,zdir='y',color='black')
+ax.plot(xip+.04,yip+1.5,10,zdir='y',color='black')
 ########
 
 for oX in range(xParaBounds):
@@ -66,7 +67,19 @@ for oX in range(xParaBounds):
 for oY in range(yParaBounds):
     ax.plot(yi+.4,-xi+((doey[0]+doey[1])/2),(doez[2]-oY),zdir='z',color='green')
 
-motion.trackBoundry()
+
+print("x ",doex[0],doex[1],doex[2],doex[3])
+ax.scatter(doex[0],doey[0],doez[0],color="green")
+    # bottom left
+print("y ",doey[0],doey[1],doey[2],doey[3])
+ax.scatter(doex[1],doey[1],doez[1],color="green")
+    # top left
+print("z ",doez[0],doez[1],doez[2],doez[3])
+ax.scatter(doex[2],doey[2],doez[2],color="green")
+    # top right
+csvData = csvTool.readCsv('test1.csv',',')
+print(csvData)
+# motion.trackBoundry()
 guess = (1,1)
 #draw hoop, arrays are for x, y location on the graph
 backboard=[5,11.5]
