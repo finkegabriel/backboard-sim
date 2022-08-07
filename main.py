@@ -1,4 +1,3 @@
-from turtle import color
 from matplotlib.patches import Rectangle,Circle
 from translate import Translate
 from graph import Graph

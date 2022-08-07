@@ -1,42 +1,18 @@
-# import matplotlib.pyplot as plt
-
-# X = [1,2,3,4,5,6,7,8,9,10]
-# Y = [10,9,8,7,6,5,4,3,2,1]
-
-# for x,y in zip(X, Y):
-#     x1 = [0, x]
-#     y1 = [y, 0]
-#     plt.plot(x1, y1)
-# plt.show()
-
+import matplotlib.pyplot as plt
 import numpy as np
+import math as math
 
-x=np.arange(2)
-y=np.arange(3)
-[X,Y] = np.meshgrid(x,y)
-S=X+Y
+# create 1000 equally spaced points between -10 and 10
+x = np.linspace(-10,10, 1000)
+rotate = math.degrees(1.7)
+# calculate the y value for each element of the x vector
+y = x**2
+yii = ((x*math.cos(rotate))+(y*math.sin(rotate)))
 
-print(S.shape)
-# (3, 2)
-# Note that meshgrid associates y with the 0-axis, and x with the 1-axis.
+print("rotated ")
 
-print(S)
-# [[0 1]
-#  [1 2]
-#  [2 3]]
-
-s=np.empty((3,2))
-print(s.shape)
-# (3, 2)
-
-# x.shape is (2,).
-# y.shape is (3,).
-# x's shape is broadcasted to (3,2)
-# y varies along the 0-axis, so to get its shape broadcasted, we first upgrade it to
-# have shape (3,1), using np.newaxis. Arrays of shape (3,1) can be broadcasted to
-# arrays of shape (3,2).
-s=x+y[:,np.newaxis]
-print(s)
-# [[0 1]
-#  [1 2]
-#  [2 3]]
+fig, ax = plt.subplots()
+plt.ylim([-30,30])
+plt.xlim([-10,30])
+ax.plot(x, yii)
+plt.show()
