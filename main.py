@@ -89,10 +89,16 @@ p = Rectangle(xy,9,6,edgecolor='red',facecolor='none')
 
 print(" x ",xip+.4," y ",yip+1.5," z ",10," length ",xip[len(xip)-1],yip[len(yip)-1],10)
 
-# to get vertex of the parabola index at 0 so xip[len(xip)-(len(xip))] will result in locating index 0
+# to get vertex of the parabola index at 0 so xip[len(xip)-(len(xip))],yip[len(yip)-(len(yip))]+OFFSET will result in locating index 0
 # use this in automated fashion to get the vertex and calculate bounce angle
 
+## player stats
 ax.scatter(xip[len(xip)-(len(xip))]+.4,yip[len(yip)-(len(yip))]+1.5,10,zdir='y',color='purple')
+playerHeight = (yip[len(yip)-1]-yip[len(yip)-1]+1.5)/2
+print("height ",playerHeight)
+ax.scatter(xip[len(xip)-1]+.4,playerHeight,10,zdir='y',color='purple')
+playerPOS = [xip[len(xip)-1]+.4,yip[len(yip)-1]+1.5,10]
+##
 
 for oX in range(xParaBounds):
     ax.plot(yiiii+.4,xiii+((doez[0]+doez[2])/2),((doey[1])+oX),zdir='y',color='green')
