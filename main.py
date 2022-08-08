@@ -109,10 +109,8 @@ x2 = xip[len(xip)-(len(xip))]+offset
 y2 = yip[len(yip)-(len(yip))]+1.5
 
 M=(y2-y1)/(x2-x1)
-y=(M*xip)+3.5
+y=(M*xip)
 
-ax.set_xlim(x1,x2)
-ax.set_ylim(y1,y2)
 ax.plot(xip,y+10,y+13.8,zdir='z',color='purple')
 print(M)
 
