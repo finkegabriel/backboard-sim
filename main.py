@@ -113,7 +113,7 @@ y=(M*xip)+3.5
 
 ax.set_xlim(x1,x2)
 ax.set_ylim(y1,y2)
-ax.plot(xip+offset,y+10,y+13.8,zdir='z',color='purple')
+ax.plot(xip,y+10,y+13.8,zdir='z',color='purple')
 print(M)
 
 # print(x1,y1,x2,y2)
