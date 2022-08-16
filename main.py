@@ -1,5 +1,4 @@
 from matplotlib.patches import Rectangle,Circle
-from translate import Translate
 from graph import Graph
 import matplotlib.pyplot as plt
 import numpy as np
@@ -14,7 +13,6 @@ import scipy.optimize as opt
 import motion as motion
 import csvfile as csvTool
 
-t1 = Translate()
 g1 = Graph()
 ax = plt.axes(projection="3d")
 
@@ -113,10 +111,6 @@ y=(M*xip)
 
 ax.plot(xip,y+10,y+13.8,zdir='z',color='purple')
 print(M)
-
-# print(x1,y1,x2,y2)
-# plt.plot(x1,y1,marker='o')
-# plt.plot(x2,y2,marker='x')
 
 for oX in range(xParaBounds):
     ax.plot(yiiii+offset,xiii+((doez[0]+doez[2])/2),((doey[1])+oX),zdir='y',color='green')

@@ -7,15 +7,6 @@ import csvfile as csv
 import mpl_toolkits.mplot3d.art3d as art3d
 
 class Graph():
-    def plot3D(self,ax,x,y,z):
-        ax.plot(x,y,z)
-        ax.set_xlabel('x')
-        ax.set_ylabel('y')
-        ax.set_zlabel('z')
-        ax.set_xlim(0, 20)
-        ax.set_ylim(0, 20)
-        ax.set_zlim(0, 20)
-
     def draw(self,ax,b,p,c):
         ax.add_patch(b)
         ax.add_patch(p)
@@ -32,7 +23,3 @@ class Graph():
         ax.set_xlim(0, 20)
         ax.set_ylim(0, 20)
         ax.set_zlim(0, 20)
-
-    def save_csv(self,x,y,z):
-        csv.exportCsv("data_2.csv",x,y,z)
-
