@@ -99,18 +99,60 @@ playerPOS = [xip[len(xip)-1]+offset,yip[len(yip)-1]+1.5,10]
 
 # middle point to aim for bounce trajectory
 ax.scatter(circlexy[0],circlexy[1],10,zdir='z',color='purple')
-
+ts = [] 
 #calculate bounce for 1 situation
 x1 = circlexy[0]
 y1 = circlexy[1]
+z1 = 11
 x2 = xip[len(xip)-(len(xip))]+offset
 y2 = yip[len(yip)-(len(yip))]+1.5
+z2 = 10
 
+ra = math.sqrt((x2-x1)**2+(y2-y1)**2+(z2-z1)**2)
+print("ra ",ra)
+for lt in range(0,int(ra)):
+    ts.append(lt)
+
+x3=[]
+y3=[]
+z3=[]
+
+print("X ",x2-x1," x1 ",x1,x2)
+print("Y ",y2-y1," y1 ",y1,y2)
+print("Z ",z2-z1," z1 ",z1,z2)
+
+if (x2-x1)>0:
+    for lm in range(0,len(ts)):
+        print("x postive")
+        x3.append((x1+(x2-x1)*(lm))-1.5)
+else:
+    for lm in range(0,len(ts)):
+        print("x negtive")
+        x3.append((x1-(x2-x1)*(lm))-1.5)
+
+if (y2-y1)>0:
+    for lm in range(0,len(ts)):
+        print("y postive")
+        y3.append(((y1+(y2-y1))*(lm))-5)
+else:
+    for lm in range(0,len(ts)):
+        print("y negtive")
+        y3.append(((y1-(y2-y1))*(lm))+5)
+
+if (z2-z1)>0:
+    for lm in range(0,len(ts)):
+        print("z postive")
+        z3.append(((z1+(z2-z1)))*(lm))
+else:
+     for lm in range(0,len(ts)):
+        print("z negtive")
+        z3.append(((z1-(z2-z1)))*(lm))
+
+#using vectors
 M=(y2-y1)/(x2-x1)
 y=(M*xip)
-
-ax.plot(xip,y+10,y+13.8,zdir='z',color='purple')
-print(M)
+csvTool.outputCsv({'x':x3,'y':y3,'z':z3})
+ax.plot(x3,y3,z3,zdir='z',linestyle='--',color='purple')
 
 for oX in range(xParaBounds):
     ax.plot(yiiii+offset,xiii+((doez[0]+doez[2])/2),((doey[1])+oX),zdir='y',color='green')
