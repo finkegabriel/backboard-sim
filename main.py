@@ -90,7 +90,6 @@ p = Rectangle(xy,9,6,edgecolor='red',facecolor='none')
 # use this in automated fashion to get the vertex and calculate bounce angle
 
 ## player stats
-ax.scatter(xip[len(xip)-(len(xip))]+offset,yip[len(yip)-(len(yip))]+1.5,10,zdir='y',color='purple')
 playerHeight = (yip[len(yip)-1]-yip[len(yip)-1]+1.5)/2
 print("height ",playerHeight)
 ax.scatter(xip[len(xip)-1]+offset,playerHeight,10,zdir='y',color='purple')
@@ -98,60 +97,38 @@ playerPOS = [xip[len(xip)-1]+offset,yip[len(yip)-1]+1.5,10]
 ##
 
 # middle point to aim for bounce trajectory
+ax.scatter(xip[len(xip)-(len(xip))]-offset,yip[len(yip)-(len(yip))]-2,13,zdir='z',color='purple')
 ax.scatter(circlexy[0],circlexy[1],10,zdir='z',color='purple')
-ts = [] 
+
+'''
+Direction ratio to calc 3d line through points
+AKA DR
+
+P1(2.25,6.5,13.5)
+P2(0.4,13.5,10)
+
+'''
+
 #calculate bounce for 1 situation
 x1 = circlexy[0]
 y1 = circlexy[1]
-z1 = 11
+z1 = 10
 x2 = xip[len(xip)-(len(xip))]+offset
-y2 = yip[len(yip)-(len(yip))]+1.5
-z2 = 10
+y2 = yip[len(yip)-(len(yip))]-2
+z2 = 13
 
-ra = math.sqrt((x2-x1)**2+(y2-y1)**2+(z2-z1)**2)
-print("ra ",ra)
-for lt in range(0,int(ra)):
-    ts.append(lt)
-
-x3=[]
-y3=[]
-z3=[]
+print("P1 "," x ",x1," y ",y1," z ",z1)
+print("P2 "," x ",x2," y ",y2," z ",z2)
 
 print("X ",x2-x1," x1 ",x1,x2)
 print("Y ",y2-y1," y1 ",y1,y2)
 print("Z ",z2-z1," z1 ",z1,z2)
 
-if (x2-x1)>0:
-    for lm in range(0,len(ts)):
-        print("x postive")
-        x3.append((x1+(x2-x1)*(lm))-1.5)
-else:
-    for lm in range(0,len(ts)):
-        print("x negtive")
-        x3.append((x1-(x2-x1)*(lm))-1.5)
-
-if (y2-y1)>0:
-    for lm in range(0,len(ts)):
-        print("y postive")
-        y3.append(((y1+(y2-y1))*(lm))-5)
-else:
-    for lm in range(0,len(ts)):
-        print("y negtive")
-        y3.append(((y1-(y2-y1))*(lm))+5)
-
-if (z2-z1)>0:
-    for lm in range(0,len(ts)):
-        print("z postive")
-        z3.append(((z1+(z2-z1)))*(lm))
-else:
-     for lm in range(0,len(ts)):
-        print("z negtive")
-        z3.append(((z1-(z2-z1)))*(lm))
+x3,y3,z3 = [x2,x1],[y2,y1],[z2,z1]
 
 #using vectors
-M=(y2-y1)/(x2-x1)
-y=(M*xip)
 csvTool.outputCsv({'x':x3,'y':y3,'z':z3})
+
 ax.plot(x3,y3,z3,zdir='z',linestyle='--',color='purple')
 
 for oX in range(xParaBounds):
@@ -162,4 +139,4 @@ for oY in range(yParaBounds):
 
 g1.draw(ax,b,p,c)
 plt.show()
-importlib.reload(plt) 
+importlib.reload(plt)
