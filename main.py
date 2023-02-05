@@ -84,7 +84,7 @@ print("height ",playerHeight)
 ax.scatter(xip[len(xip)-1]+offset,playerHeight,10,zdir='y',color='purple')
 
 # middle point to aim for bounce trajectory
-ax.scatter(xip[len(xip)-(len(xip))]-offset,yip[len(yip)-(len(yip))]-2,13,zdir='z',color='purple')
+ax.scatter(xip[len(xip)-(len(xip))]+offset,yip[len(yip)-(len(yip))]-2,13,zdir='z',color='purple')
 ax.scatter(circlexy[0],circlexy[1],10,zdir='z',color='purple')
 
 #calculate bounce for 1 situation
