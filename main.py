@@ -40,7 +40,6 @@ xi = np.linspace(-5.5, 6.5, 500)
 yi = .03*xi**2
 yii = (((-xi*math.cos(theta)+yi*math.sin(theta)-h)**2)+k)
 
-#plot of the top parabola to average with a matrix
 ax.plot(yii+offset,-xi+((doey[0]+doey[1])/2),(doez[2]),zdir='z',color='green')
 
 # second plot of the parabola off to the side of the hoop
@@ -59,19 +58,9 @@ yip = .09*-xip**2+12
 ax.plot(xip+offset,yip+1.5,10,zdir='y',color='black')
 ########
 
-# print("x ",doex[0],doex[1],doex[2],doex[3])
-# ax.scatter(doex[0],doey[0],doez[0],color="green")
-#     # bottom left
-# print("y ",doey[0],doey[1],doey[2],doey[3])
-# ax.scatter(doex[1],doey[1],doez[1],color="green")
-#     # top left
-# print("z ",doez[0],doez[1],doez[2],doez[3])
-# ax.scatter(doex[2],doey[2],doez[2],color="green")
-#     # top right
+# csvData = csvTool.readCsv('test1.csv',',')
+# print(csvData)
 
-csvData = csvTool.readCsv('test1.csv',',')
-print(csvData)
-# motion.trackBoundry()
 guess = (1,1)
 #draw hoop, arrays are for x, y location on the graph
 backboard=[5,11.5]
@@ -93,21 +82,10 @@ p = Rectangle(xy,9,6,edgecolor='red',facecolor='none')
 playerHeight = (yip[len(yip)-1]-yip[len(yip)-1]+1.5)/2
 print("height ",playerHeight)
 ax.scatter(xip[len(xip)-1]+offset,playerHeight,10,zdir='y',color='purple')
-playerPOS = [xip[len(xip)-1]+offset,yip[len(yip)-1]+1.5,10]
-##
 
 # middle point to aim for bounce trajectory
 ax.scatter(xip[len(xip)-(len(xip))]-offset,yip[len(yip)-(len(yip))]-2,13,zdir='z',color='purple')
 ax.scatter(circlexy[0],circlexy[1],10,zdir='z',color='purple')
-
-'''
-Direction ratio to calc 3d line through points
-AKA DR
-
-P1(2.25,6.5,13.5)
-P2(0.4,13.5,10)
-
-'''
 
 #calculate bounce for 1 situation
 x1 = circlexy[0]
