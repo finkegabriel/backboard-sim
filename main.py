@@ -78,15 +78,6 @@ p = Rectangle(xy,9,6,edgecolor='red',facecolor='none')
 # to get vertex of the parabola index at 0 so xip[len(xip)-(len(xip))],yip[len(yip)-(len(yip))]+OFFSET will result in locating index 0
 # use this in automated fashion to get the vertex and calculate bounce angle
 
-## player stats
-playerHeight = (yip[len(yip)-1]-yip[len(yip)-1]+1.5)/2
-print("height ",playerHeight)
-ax.scatter(xip[len(xip)-1]+offset,playerHeight,10,zdir='y',color='purple')
-
-# middle point to aim for bounce trajectory
-ax.scatter(xip[len(xip)-(len(xip))]+offset,yip[len(yip)-(len(yip))]-2,13,zdir='z',color='purple')
-ax.scatter(circlexy[0],circlexy[1],10,zdir='z',color='purple')
-
 #calculate bounce for 1 situation
 x1 = circlexy[0]
 y1 = circlexy[1]
@@ -94,6 +85,15 @@ z1 = 10
 x2 = xip[len(xip)-(len(xip))]+offset
 y2 = yip[len(yip)-(len(yip))]-2
 z2 = 13
+
+## player stats
+playerHeight = (yip[len(yip)-1]-yip[len(yip)-1]+1.5)/2
+print("height ",playerHeight)
+ax.scatter(xip[len(xip)-1]+offset,playerHeight,10,zdir='y',color='purple')
+
+# middle point to aim for bounce trajectory
+ax.scatter(x2,y2,z2,zdir='z',color='purple')
+ax.scatter(x1,y1,z1,zdir='z',color='purple')
 
 print("P1 "," x ",x1," y ",y1," z ",z1)
 print("P2 "," x ",x2," y ",y2," z ",z2)
