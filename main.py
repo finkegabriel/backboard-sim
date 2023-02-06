@@ -40,13 +40,10 @@ xi = np.linspace(-5.5, 6.5, 500)
 yi = .03*xi**2
 yii = (((-xi*math.cos(theta)+yi*math.sin(theta)-h)**2)+k)
 
-ax.plot(yii+offset,-xi+((doey[0]+doey[1])/2),(doez[2]),zdir='z',color='green')
-
 # second plot of the parabola off to the side of the hoop
 xii = np.linspace(-5.5,6.5,500)
 yii = .03*xii**2
 yiii = (((-xi*math.cos(theta)+yi*math.sin(theta)-h)**2)+k)
-ax.plot(yii+offset,xi+((doez[0]+doez[2])/2),((doey[0])),zdir='y',color='green')#(doey[0]),zdir='y')
 
 xiii = np.linspace(-5.5,6.5,500)
 yiiii = .03*xii**2
@@ -55,8 +52,11 @@ yiiiii = (((-xi*math.cos(theta)+yi*math.sin(theta)-h)**2)+k)
 ########
 xip = np.linspace(0, 10, 500)
 yip = .09*-xip**2+12
+
 ax.plot(xip+offset,yip+1.5,10,zdir='y',color='black')
 ########
+
+print("opppp ",yip[len(yip)-1]+1.5,xip+offset)
 
 # csvData = csvTool.readCsv('test1.csv',',')
 # print(csvData)
@@ -109,11 +109,13 @@ csvTool.outputCsv({'x':x3,'y':y3,'z':z3})
 
 ax.plot(x3,y3,z3,zdir='z',linestyle='--',color='purple')
 
-for oX in range(xParaBounds):
-    ax.plot(yiiii+offset,xiii+((doez[0]+doez[2])/2),((doey[1])+oX),zdir='y',color='green')
+#X
+ax.plot((yiiii+offset)-.5,.5*xiii+((doez[0]+doez[2])/2)-.25,((doey[1])+xParaBounds),zdir='y',color='green')
+ax.plot((yiiii+offset)-.5,.5*xiii+((doez[0]+doez[2])/2)-.25,((doey[1])+(xParaBounds-9)),zdir='y',color='green')
 
-for oY in range(yParaBounds):
-    ax.plot(yi+offset,-xi+((doey[0]+doey[1])/2),(doez[2]-oY),zdir='z',color='green')
+#Y
+ax.plot((yi+offset)-.5,.765*-xi+((doey[0]+doey[1])/2)+.25,(doez[2]+(yParaBounds-13)),zdir='z',color='green')
+ax.plot((yii+offset)-.5,.765*-xi+((doey[0]+doey[1])/2)+.25,(doez[2]),zdir='z',color='green')
 
 g1.draw(ax,b,p,c)
 plt.show()
