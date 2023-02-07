@@ -12,6 +12,7 @@ import math as math
 import scipy.optimize as opt
 import motion as motion
 import csvfile as csvTool
+import random as random
 
 g1 = Graph()
 ax = plt.axes(projection="3d")
@@ -33,8 +34,8 @@ xParaBounds = 9
 yParaBounds = 7
 
 # bellow will draw points where the parabolic mesh should be top left, top right, center, bottom right, and bottom left points
-ax.scatter(doex, doey, doez, color='b')
-ax.scatter(doex[0],((doey[0]+doey[1])/2),((doez[0]+doez[2])/2),color='b')
+ax.scatter(doex, doey, doez, color='blue')
+# ax.scatter(doex[0],((doey[0]+doey[1])/2),((doez[0]+doez[2])/2),color='blue')
 
 xi = np.linspace(-5.5, 6.5, 500)
 yi = .03*xi**2
@@ -53,7 +54,8 @@ yiiiii = (((-xi*math.cos(theta)+yi*math.sin(theta)-h)**2)+k)
 xip = np.linspace(0, 10, 500)
 yip = .09*-xip**2+12
 
-ax.plot(xip+offset,yip+1.5,10,zdir='y',color='black')
+# ax.plot(xip+offset,yip+1.5,10,zdir='y',color='black')
+ax.plot(xip,yip,10,zdir='y',color='black')
 ########
 
 print("opppp ",yip[len(yip)-1]+1.5,xip+offset)
@@ -104,18 +106,39 @@ print("Z ",z2-z1," z1 ",z1,z2)
 
 x3,y3,z3 = [x2,x1],[y2,y1],[z2,z1]
 
+maxX = max(doex)
+maxY = max(doey)
+maxZ = max(doez)
+
+minX = min(doex)
+minY = min(doey)
+minZ = min(doez)
+
+randX = random.uniform(minX,maxX)
+randY = random.uniform(minY,maxY)
+randZ = random.uniform(minZ,maxZ)
+
+ax.scatter(randX,randY,randZ,color='purple')
+
+x4,y4,z4 = [randX,x1],[randY,y1],[randZ,z1]
+
+ax.plot(x4,y4,z4,zdir='z',linestyle='--',color='purple')
+# ax.plot(randParaX+offset,randParaY+1.5,randZ,zdir="y",color='black')
+print("x val: ",randX," y val: ",randY," z val: ",10)
+
 #using vectors
 csvTool.outputCsv({'x':x3,'y':y3,'z':z3})
 
 ax.plot(x3,y3,z3,zdir='z',linestyle='--',color='purple')
 
+#Boundry box
 #X
-ax.plot((yiiii+offset)-.5,.5*xiii+((doez[0]+doez[2])/2)-.25,((doey[1])+xParaBounds),zdir='y',color='green')
-ax.plot((yiiii+offset)-.5,.5*xiii+((doez[0]+doez[2])/2)-.25,((doey[1])+(xParaBounds-9)),zdir='y',color='green')
+# ax.plot((yiiii+offset)-.5,.5*xiii+((doez[0]+doez[2])/2)-.25,((doey[1])+xParaBounds),zdir='y',color='green')
+# ax.plot((yiiii+offset)-.5,.5*xiii+((doez[0]+doez[2])/2)-.25,((doey[1])+(xParaBounds-9)),zdir='y',color='green')
 
 #Y
-ax.plot((yi+offset)-.5,.765*-xi+((doey[0]+doey[1])/2)+.25,(doez[2]+(yParaBounds-13)),zdir='z',color='green')
-ax.plot((yii+offset)-.5,.765*-xi+((doey[0]+doey[1])/2)+.25,(doez[2]),zdir='z',color='green')
+# ax.plot((yi+offset)-.5,.765*-xi+((doey[0]+doey[1])/2)+.25,(doez[2]+(yParaBounds-13)),zdir='z',color='green')
+# ax.plot((yii+offset)-.5,.765*-xi+((doey[0]+doey[1])/2)+.25,(doez[2]),zdir='z',color='green')
 
 g1.draw(ax,b,p,c)
 plt.show()
