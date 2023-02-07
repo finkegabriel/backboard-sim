@@ -55,7 +55,7 @@ xip = np.linspace(0, 10, 500)
 yip = .09*-xip**2+12
 
 # ax.plot(xip+offset,yip+1.5,10,zdir='y',color='black')
-ax.plot(xip,yip,10,zdir='y',color='black')
+# ax.plot(xip,yip,10,zdir='y',color='black')
 ########
 
 print("opppp ",yip[len(yip)-1]+1.5,xip+offset)
@@ -94,7 +94,7 @@ print("height ",playerHeight)
 ax.scatter(xip[len(xip)-1]+offset,playerHeight,10,zdir='y',color='purple')
 
 # middle point to aim for bounce trajectory
-ax.scatter(x2,y2,z2,zdir='z',color='purple')
+# ax.scatter(x2,y2,z2,zdir='z',color='purple')
 ax.scatter(x1,y1,z1,zdir='z',color='purple')
 
 print("P1 "," x ",x1," y ",y1," z ",z1)
@@ -104,7 +104,7 @@ print("X ",x2-x1," x1 ",x1,x2)
 print("Y ",y2-y1," y1 ",y1,y2)
 print("Z ",z2-z1," z1 ",z1,z2)
 
-x3,y3,z3 = [x2,x1],[y2,y1],[z2,z1]
+# x3,y3,z3 = [x2,x1],[y2,y1],[z2,z1]
 
 maxX = max(doex)
 maxY = max(doey)
@@ -120,18 +120,21 @@ randZ = random.uniform(minZ,maxZ)
 
 ax.scatter(randX,randY,randZ,color='purple')
 
+########
+#this helps randomize and prove that boundry detection is working
+#Going to ultimatly use the monte calo method to do this
+
 x4,y4,z4 = [randX,x1],[randY,y1],[randZ,z1]
 
 ax.plot(x4,y4,z4,zdir='z',linestyle='--',color='purple')
-# ax.plot(randParaX+offset,randParaY+1.5,randZ,zdir="y",color='black')
 print("x val: ",randX," y val: ",randY," z val: ",10)
+########
 
-#using vectors
-csvTool.outputCsv({'x':x3,'y':y3,'z':z3})
+# ax.plot(randParaX+offset,randParaY+1.5,randZ,zdir="y",color='black')
+# csvTool.outputCsv({'x':x3,'y':y3,'z':z3})
 
-ax.plot(x3,y3,z3,zdir='z',linestyle='--',color='purple')
+# ax.plot(x3,y3,z3,zdir='z',linestyle='--',color='purple')
 
-#Boundry box
 #X
 # ax.plot((yiiii+offset)-.5,.5*xiii+((doez[0]+doez[2])/2)-.25,((doey[1])+xParaBounds),zdir='y',color='green')
 # ax.plot((yiiii+offset)-.5,.5*xiii+((doez[0]+doez[2])/2)-.25,((doey[1])+(xParaBounds-9)),zdir='y',color='green')
