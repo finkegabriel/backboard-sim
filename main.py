@@ -1,6 +1,4 @@
-from turtle import color
 from matplotlib.patches import Rectangle,Circle
-from translate import Translate
 from graph import Graph
 import matplotlib.pyplot as plt
 import numpy as np
@@ -13,8 +11,9 @@ from scipy.spatial.transform import Rotation as R
 import math as math
 import scipy.optimize as opt
 import motion as motion
+import csvfile as csvTool
+import random as random
 
-t1 = Translate()
 g1 = Graph()
 ax = plt.axes(projection="3d")
 
@@ -29,26 +28,23 @@ doez = [9.9,9.9,15.9,15.9]
 theta = 1.52
 h= 0
 k= 0
+offset = .4
 
 xParaBounds = 9
 yParaBounds = 7
 
 # bellow will draw points where the parabolic mesh should be top left, top right, center, bottom right, and bottom left points
-ax.scatter(doex, doey, doez, color='b')
-ax.scatter(doex[0],((doey[0]+doey[1])/2),((doez[0]+doez[2])/2),color='b')
+ax.scatter(doex, doey, doez, color='blue')
+# ax.scatter(doex[0],((doey[0]+doey[1])/2),((doez[0]+doez[2])/2),color='blue')
 
 xi = np.linspace(-5.5, 6.5, 500)
 yi = .03*xi**2
 yii = (((-xi*math.cos(theta)+yi*math.sin(theta)-h)**2)+k)
 
-#plot of the top parabola to average with a matrix
-ax.plot(yii+.4,-xi+((doey[0]+doey[1])/2),(doez[2]),zdir='z',color='green')
-
 # second plot of the parabola off to the side of the hoop
 xii = np.linspace(-5.5,6.5,500)
 yii = .03*xii**2
 yiii = (((-xi*math.cos(theta)+yi*math.sin(theta)-h)**2)+k)
-ax.plot(yii+.4,xi+((doez[0]+doez[2])/2),((doey[0])),zdir='y',color='green')#(doey[0]),zdir='y')
 
 xiii = np.linspace(-5.5,6.5,500)
 yiiii = .03*xii**2
@@ -57,16 +53,16 @@ yiiiii = (((-xi*math.cos(theta)+yi*math.sin(theta)-h)**2)+k)
 ########
 xip = np.linspace(0, 10, 500)
 yip = .09*-xip**2+12
+
+# ax.plot(xip+offset,yip+1.5,10,zdir='y',color='black')
 ax.plot(xip,yip,10,zdir='y',color='black')
 ########
 
-for oX in range(xParaBounds):
-    ax.plot(yiiii+.4,xiii+((doez[0]+doez[2])/2),((doey[1])+oX),zdir='y',color='green')
+print("opppp ",yip[len(yip)-1]+1.5,xip+offset)
 
-for oY in range(yParaBounds):
-    ax.plot(yi+.4,-xi+((doey[0]+doey[1])/2),(doez[2]-oY),zdir='z',color='green')
+# csvData = csvTool.readCsv('test1.csv',',')
+# print(csvData)
 
-motion.trackBoundry()
 guess = (1,1)
 #draw hoop, arrays are for x, y location on the graph
 backboard=[5,11.5]
@@ -81,10 +77,69 @@ c = Circle((circlexy),radius=2.25,fill=False)
 #72 - 9 48 - 6 
 p = Rectangle(xy,9,6,edgecolor='red',facecolor='none')
 
-# for _ in range(0,1): #for loop to create multiple parabolas instances
-#     z = para.z(x,s,_)
-    # ax.plot(x,s,'b--',zs=z,zdir="y")
+# to get vertex of the parabola index at 0 so xip[len(xip)-(len(xip))],yip[len(yip)-(len(yip))]+OFFSET will result in locating index 0
+# use this in automated fashion to get the vertex and calculate bounce angle
+
+#calculate bounce for 1 situation
+x1 = circlexy[0]
+y1 = circlexy[1]
+z1 = 10
+x2 = xip[len(xip)-(len(xip))]+offset
+y2 = yip[len(yip)-(len(yip))]-2
+z2 = 13
+
+## player stats
+playerHeight = (yip[len(yip)-1]-yip[len(yip)-1]+1.5)/2
+print("height ",playerHeight)
+ax.scatter(xip[len(xip)-1]+offset,playerHeight,10,zdir='y',color='purple')
+
+# middle point to aim for bounce trajectory
+ax.scatter(x2,y2,z2,zdir='z',color='purple')
+ax.scatter(x1,y1,z1,zdir='z',color='purple')
+
+print("P1 "," x ",x1," y ",y1," z ",z1)
+print("P2 "," x ",x2," y ",y2," z ",z2)
+
+print("X ",x2-x1," x1 ",x1,x2)
+print("Y ",y2-y1," y1 ",y1,y2)
+print("Z ",z2-z1," z1 ",z1,z2)
+
+x3,y3,z3 = [x2,x1],[y2,y1],[z2,z1]
+
+maxX = max(doex)
+maxY = max(doey)
+maxZ = max(doez)
+
+minX = min(doex)
+minY = min(doey)
+minZ = min(doez)
+
+randX = random.uniform(minX,maxX)
+randY = random.uniform(minY,maxY)
+randZ = random.uniform(minZ,maxZ)
+
+ax.scatter(randX,randY,randZ,color='purple')
+
+x4,y4,z4 = [randX,x1],[randY,y1],[randZ,z1]
+
+ax.plot(x4,y4,z4,zdir='z',linestyle='--',color='purple')
+# ax.plot(randParaX+offset,randParaY+1.5,randZ,zdir="y",color='black')
+print("x val: ",randX," y val: ",randY," z val: ",10)
+
+#using vectors
+csvTool.outputCsv({'x':x3,'y':y3,'z':z3})
+
+ax.plot(x3,y3,z3,zdir='z',linestyle='--',color='purple')
+
+#Boundry box
+#X
+# ax.plot((yiiii+offset)-.5,.5*xiii+((doez[0]+doez[2])/2)-.25,((doey[1])+xParaBounds),zdir='y',color='green')
+# ax.plot((yiiii+offset)-.5,.5*xiii+((doez[0]+doez[2])/2)-.25,((doey[1])+(xParaBounds-9)),zdir='y',color='green')
+
+#Y
+# ax.plot((yi+offset)-.5,.765*-xi+((doey[0]+doey[1])/2)+.25,(doez[2]+(yParaBounds-13)),zdir='z',color='green')
+# ax.plot((yii+offset)-.5,.765*-xi+((doey[0]+doey[1])/2)+.25,(doez[2]),zdir='z',color='green')
 
 g1.draw(ax,b,p,c)
 plt.show()
-importlib.reload(plt) 
+importlib.reload(plt)
