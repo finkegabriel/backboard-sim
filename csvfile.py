@@ -6,6 +6,6 @@ def readCsv(csvFile,delim):
     return df
 
 def outputCsv(d):
-    dateFrame = pd.DataFrame(d)
-    dateFrame.to_csv("3d_bounce_traj.csv",index=False)
+    dateFrame = pd.DataFrame(d,index=[0])
+    dateFrame.to_csv("3d_bounce_traj.csv", mode='a',header=False,index=False)
     print("written out")
