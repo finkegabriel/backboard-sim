@@ -34,11 +34,10 @@ def random_time(x,y,z):
     randZ = random.uniform(minZ,maxZ)
     x4,y4,z4 = [randX,x],[randY,y],[randZ,z]
 
-    csvTool.outputCsv({'xbound':randX,'ybound':randY,'zbound':randZ})
-
     ax.scatter(randX,randY,randZ,zdir='z',color='purple')
     ax.plot(x4,y4,z4,zdir='z',linestyle='--',color='purple')
-
+    print(x4,y4,z4)
+    return {"x":x4,"y":y4,"z":z4}
 
 doex = [.4,.4,.4,.4]
 doey = [11,2,2,11]
@@ -113,25 +112,26 @@ z1 = 10
 playerHeight = (yip[len(yip)-1]-yip[len(yip)-1]+1.5)/2
 ax.scatter(xip[len(xip)-1]+offset,playerHeight,10,zdir='y',color='purple')
 
-# middle point to aim for bounce trajectory
+# ax.plot(randParaX+offset,randParaY+1.5,randZ,zdir="y",color='black')
+
+#X
+# ax.plot((yiiii+offset)-.5,.5*xiii+((doez[0]+doez[2])/2)-.25,((doey[1])+xParaBounds),zdir='y',color='green')
+# ax.plot((yiiii+offset)-.5,.5*xiii+((doez[0]+doez[2])/2)-.25,((doey[1])+(xParaBounds-9)),zdir='y',color='green')
+
+#Y
+# ax.plot((yi+offset)-.5,.765*-xi+((doey[0]+doey[1])/2)+.25,(doez[2]+(yParaBounds-13)),zdir='z',color='green')
+# ax.plot((yii+offset)-.5,.765*-xi+((doey[0]+doey[1])/2)+.25,(doez[2]),zdir='z',color='green')
+
 ########
 #this helps randomize and prove that boundry detection is working
 #Going to ultimatly use the monte calo method to do this
 for l in range(0,20):
-    random_time(x1,y1,z1)
+    rand = random_time(x1,y1,z1)
+    print(rand['x'][0],rand['y'][0],rand['z'][0])
+    csvTool.outputCsv({'xbound':rand['x'][0],'ybound':rand['y'][0],'zbound':rand['z'][0]})
 
 ax.scatter(x1,y1,z1,zdir='z',color='purple')
 ########
-
-# ax.plot(randParaX+offset,randParaY+1.5,randZ,zdir="y",color='black')
-
-#X
-ax.plot((yiiii+offset)-.5,.5*xiii+((doez[0]+doez[2])/2)-.25,((doey[1])+xParaBounds),zdir='y',color='green')
-ax.plot((yiiii+offset)-.5,.5*xiii+((doez[0]+doez[2])/2)-.25,((doey[1])+(xParaBounds-9)),zdir='y',color='green')
-
-#Y
-ax.plot((yi+offset)-.5,.765*-xi+((doey[0]+doey[1])/2)+.25,(doez[2]+(yParaBounds-13)),zdir='z',color='green')
-ax.plot((yii+offset)-.5,.765*-xi+((doey[0]+doey[1])/2)+.25,(doez[2]),zdir='z',color='green')
 
 g1.draw(ax,b,p,c)
 plt.show()
