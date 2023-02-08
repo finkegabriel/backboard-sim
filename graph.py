@@ -1,6 +1,5 @@
 from tkinter import Y
 from mpl_toolkits.mplot3d import Axes3D
-from parabolic import X
 from scipy.ndimage.interpolation import rotate
 import mpl_toolkits.mplot3d.art3d as art3d
 import csvfile as csv

@@ -2,14 +2,12 @@ from matplotlib.patches import Rectangle,Circle
 from graph import Graph
 import matplotlib.pyplot as plt
 import numpy as np
-import parabolic as para
 import importlib
 from datetime import datetime, timedelta
 import scipy.optimize as optimize
 from mpl_toolkits.mplot3d import Axes3D
 from scipy.spatial.transform import Rotation as R
 import math as math
-import motion as motion
 import csvfile as csvTool
 import random as random
 
@@ -88,8 +86,8 @@ backboard=[5,11.5]
 xy=[2,10]
 #hoop location parameters
 circlexy=[2.25,6.5]
-x = para.X(0,15)
-s = para.parabolic(.3,0,12,x)
+# x = para.X(0,15)
+# s = para.parabolic(.3,0,12,x)
 
 b = Rectangle(backboard,3,2.25,fill=False,color='red')
 c = Circle((circlexy),radius=2.25,fill=False)
@@ -124,10 +122,10 @@ ax.scatter(xip[len(xip)-1]+offset,playerHeight,10,zdir='y',color='purple')
 ########
 #this helps randomize and prove that boundry detection is working
 #Going to ultimatly use the monte calo method to do this
-for l in range(0,20):
-    rand = random_time(x1,y1,z1)
+# for l in range(0,20):
+rand = random_time(x1,y1,z1)
     # print(rand['x'][0],rand['y'][0],rand['z'][0])
-    csvTool.outputCsv({'xbound':rand['x'][0],'ybound':rand['y'][0],'zbound':rand['z'][0]})
+csvTool.outputCsv({'xbound':rand['x'][0],'ybound':rand['y'][0],'zbound':rand['z'][0]})
 
 ax.scatter(x1,y1,z1,zdir='z',color='purple')
 ########
