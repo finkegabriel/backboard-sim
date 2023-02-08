@@ -36,7 +36,6 @@ def random_time(x,y,z):
 
     ax.scatter(randX,randY,randZ,zdir='z',color='purple')
     ax.plot(x4,y4,z4,zdir='z',linestyle='--',color='purple')
-    print(x4,y4,z4)
     return {"x":x4,"y":y4,"z":z4}
 
 doex = [.4,.4,.4,.4]
@@ -100,10 +99,10 @@ p = Rectangle(xy,9,6,edgecolor='red',facecolor='none')
 # to get vertex of the parabola index at 0 so xip[len(xip)-(len(xip))],yip[len(yip)-(len(yip))]+OFFSET will result in locating index 0
 # use this in automated fashion to get the vertex and calculate bounce angle
 
-#calculate bounce for 1 situation
 x1 = circlexy[0]
 y1 = circlexy[1]
 z1 = 10
+
 # x2 = xip[len(xip)-(len(xip))]+offset
 # y2 = yip[len(yip)-(len(yip))]-2
 # z2 = 13
@@ -127,7 +126,7 @@ ax.scatter(xip[len(xip)-1]+offset,playerHeight,10,zdir='y',color='purple')
 #Going to ultimatly use the monte calo method to do this
 for l in range(0,20):
     rand = random_time(x1,y1,z1)
-    print(rand['x'][0],rand['y'][0],rand['z'][0])
+    # print(rand['x'][0],rand['y'][0],rand['z'][0])
     csvTool.outputCsv({'xbound':rand['x'][0],'ybound':rand['y'][0],'zbound':rand['z'][0]})
 
 ax.scatter(x1,y1,z1,zdir='z',color='purple')
