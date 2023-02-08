@@ -14,6 +14,9 @@ import random as random
 g1 = Graph()
 ax = plt.axes(projection="3d")
 
+def player(theta,vel):
+    print(theta,vel)
+
 def random_time(x,y,z):
     doex = [.4,.4,.4,.4]
     doey = [11,2,2,11]
@@ -105,10 +108,6 @@ z1 = 10
 # y2 = yip[len(yip)-(len(yip))]-2
 # z2 = 13
 
-## player stats
-playerHeight = (yip[len(yip)-1]-yip[len(yip)-1]+1.5)/2
-ax.scatter(xip[len(xip)-1]+offset,playerHeight,10,zdir='y',color='purple')
-
 # ax.plot(randParaX+offset,randParaY+1.5,randZ,zdir="y",color='black')
 
 #X
@@ -119,9 +118,22 @@ ax.scatter(xip[len(xip)-1]+offset,playerHeight,10,zdir='y',color='purple')
 # ax.plot((yi+offset)-.5,.765*-xi+((doey[0]+doey[1])/2)+.25,(doez[2]+(yParaBounds-13)),zdir='z',color='green')
 # ax.plot((yii+offset)-.5,.765*-xi+((doey[0]+doey[1])/2)+.25,(doez[2]),zdir='z',color='green')
 
+'''
+Need a random player generator that contains values like launch angle (theta), inital velocity
+'''
+
+## player stats
+playerHeight = (yip[len(yip)-1]-yip[len(yip)-1]+1.5)/2
+ax.scatter(xip[len(xip)-1]+offset,playerHeight,10,zdir='y',color='purple')
+
+playerData = player(45,90)
+
+
+
 ########
 #this helps randomize and prove that boundry detection is working
 #Going to ultimatly use the monte calo method to do this
+
 # for l in range(0,20):
 rand = random_time(x1,y1,z1)
     # print(rand['x'][0],rand['y'][0],rand['z'][0])
